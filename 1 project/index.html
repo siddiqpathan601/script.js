@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-Do List</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-  <div class="bg-white shadow-xl rounded-xl w-full max-w-md p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center"> To-Do List</h1>
-    <form id="todoForm" class="flex mb-4">
-      <input
-        id="taskInput"
-        type="text"
-        placeholder="Enter your task..."
-        class="flex-1 border border-gray-300 rounded-l-lg p-2 focus:outline-none"
-        required
-      />
-      <button
-        class="bg-blue-600 text-white px-4 rounded-r-lg hover:bg-blue-700"
-      >
-        Add
-      </button>
-    </form>
-    <ul id="taskList" class="space-y-2"></ul>
-  </div>
-  <script src="index.js"></script>
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">User Data</h2>
+
+        <form id="userForm" class="space-y-4">
+
+            <input 
+                type="text" 
+                id="name" 
+                placeholder="Enter Name" 
+                required
+                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+
+            <input 
+                type="number" 
+                id="age" 
+                placeholder="Enter Age" 
+                required
+                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+
+            <select 
+                id="gender" 
+                required
+                class="w-full px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button 
+                type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+                Submit
+            </button>
+
+        </form>
+    </div>
+
+    <script src="Task-2.js"></script>
+
 </body>
 </html>
