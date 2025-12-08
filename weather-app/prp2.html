@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Pro Services | Chartered Accountant for Tax, GST & Financial Solutions</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #10b981;
+            --text-color: #374151;
+            --light-bg: #f9fafb;
+        }
+        
+        /* Dark Mode Variables */
+        .dark {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #059669;
+            --text-color: #e5e7eb;
+            --light-bg: #111827;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: inherit;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: background 0.5s ease;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Professional Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 10px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.25);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.15);
+        }
+        
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 70px 0;
+            }
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 80px;
+            z-index: 1001;
+            background: var(--light-bg);
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .dark .dark-mode-toggle {
+            background: #1f2937;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .toggle-btn:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Professional Card Styles */
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        
+        .dark .service-card {
+            background: #1f2937;
+            border: 1px solid rgba(55, 65, 81, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 60, 114, 0.1);
+        }
+        
+        .dark .service-card:hover {
+            box-shadow: 0 20px 40px rgba(30, 60, 114, 0.2);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Stats Counter */
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+        }
+        
+        /* Hero Section Specific */
+        .hero-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.9) 0%, rgba(42, 82, 152, 0.9) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Professional Navigation */
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Form Styling */
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+            color: #374151;
+        }
+        
+        .dark .form-input {
+            background: #1f2937;
+            border-color: #4b5563;
+            color: #e5e7eb;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+        }
+        
+        .dark .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.3);
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .dark .testimonial-card {
+            background: #1f2937;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Text Selection */
+        ::selection {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
+    
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <div class="toggle-btn" id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+    
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hi,%20I%20need%20professional%20CA%20services" 
+       target="_blank" 
+       class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-50 transition-colors duration-500">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="gradient-bg w-10 h-10 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">CA</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900 dark:text-white">CA Pro Services</h1>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Chartered Accountant</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Services</a>
+                    <a href="#expertise" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Expertise</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Testimonials</a>
+                    <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Contact</a>
+                    <a href="#contact" class="btn-primary">Book Consultation</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menuBtn" class="text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 py-4 border-t dark:border-gray-700 transition-all duration-500">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2">Home</a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2">Services</a>
+                    <a href="#expertise" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2">Expertise</a>
+                    <a href="#testimonials" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2">Testimonials</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2">Contact</a>
+                    <a href="#contact" class="btn-primary text-center">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 hero-bg text-white">
+        <div class="container mx-auto px-4 hero-content">
+            <div class="flex flex-col items-center text-center">
+                <!-- Hero Content -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="fade-in">
+                        <p class="text-blue-200 font-medium mb-4 tracking-wider">CHARTERED ACCOUNTANT | FINANCIAL CONSULTANT</p>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            Professional Tax & Financial Solutions for Your Business
+                        </h1>
+                        <p class="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
+                            Expert CA services for GST filing, Income Tax returns, bookkeeping, and financial consulting. 
+                            Helping businesses and individuals save money and stay compliant.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+                            <a href="#contact" class="btn-primary px-10 py-4 text-lg">
+                                <i class="fas fa-calendar-check mr-2"></i> Book Free Consultation
+                            </a>
+                            <a href="#services" class="btn-secondary border-white text-white hover:bg-white hover:text-blue-700 px-10 py-4 text-lg">
+                                <i class="fas fa-chart-line mr-2"></i> View Services
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Section -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto fade-in">
+                        <div class="stat-card">
+                            <h3 class="text-4xl font-bold mb-2 count-up" data-target="500">0</h3>
+                            <p class="text-blue-200 font-medium">Clients Served</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-4xl font-bold mb-2 count-up" data-target="2">0</h3>
+                            <p class="text-blue-200 font-medium">Crore+ Tax Saved</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-4xl font-bold mb-2 count-up" data-target="99">0</h3>
+                            <p class="text-blue-200 font-medium">Accuracy Rate</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-4xl font-bold mb-2">24/7</h3>
+                            <p class="text-blue-200 font-medium">Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">OUR SERVICES</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Professional CA Services</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Comprehensive financial and tax solutions tailored to your specific needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card fade-in">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-element">
+                        <i class="fas fa-file-invoice-dollar text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Income Tax Filing</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Professional ITR filing with maximum deductions and compliance assurance.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Salaried & Business ITR</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Advanced Tax Planning</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Form 16 Management</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-2 group-hover:ml-3 transition-all duration-300"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card fade-in delay-1">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-element" style="animation-delay: 1s;">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">GST Services</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Complete GST compliance including registration, filing, and advisory services.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>GST Registration</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Monthly/Quarterly Returns</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Compliance Management</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-2 group-hover:ml-3 transition-all duration-300"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card fade-in delay-2">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-element" style="animation-delay: 1.5s;">
+                        <i class="fas fa-book text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Bookkeeping</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Accurate financial record management using modern accounting software.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Monthly Bookkeeping</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Financial Statements</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Accounts Management</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-2 group-hover:ml-3 transition-all duration-300"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card fade-in delay-3">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-element" style="animation-delay: 2s;">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Financial Consulting</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Strategic financial advisory for business growth and wealth management.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Business Advisory</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Financial Planning</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Investment Strategy</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-2 group-hover:ml-3 transition-all duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Expertise Section -->
+    <section id="expertise" class="section-padding bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">OUR EXPERTISE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Why Choose Our Services</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Professional expertise combined with personalized service for optimal results.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Expertise 1 -->
+                <div class="text-center fade-in">
+                    <div class="gradient-bg w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">100% Compliance</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Ensuring complete adherence to all tax laws and regulations with zero penalties.</p>
+                </div>
+                
+                <!-- Expertise 2 -->
+                <div class="text-center fade-in delay-1">
+                    <div class="gradient-bg w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Timely Filing</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Never miss a deadline with our systematic approach and timely reminders.</p>
+                </div>
+                
+                <!-- Expertise 3 -->
+                <div class="text-center fade-in delay-2">
+                    <div class="gradient-bg w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-pie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Maximum Savings</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Strategic tax planning to maximize your savings and optimize financial outcomes.</p>
+                </div>
+            </div>
+            
+            <!-- Professional Consultation CTA -->
+            <div class="mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 md:p-12 shadow-lg fade-in delay-3">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-2/3 mb-8 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">Ready for Professional Consultation?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Schedule a free 30-minute consultation with our CA experts to discuss your financial needs.</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-sm">No obligation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-sm">Expert advice</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-sm">Confidential</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#contact" class="btn-primary px-8 py-4">
+                            <i class="fas fa-calendar-alt mr-2"></i> Schedule Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">CLIENT TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">What Our Clients Say</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Trusted by businesses and individuals across industries.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4">
+                            RK
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rajesh Kumar</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic">"Professional and reliable service. They saved me from GST penalties and optimized my tax structure significantly."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card fade-in delay-1">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4">
+                            PM
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Priya Mehta</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">IT Professional</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic">"Excellent tax filing service. They identified deductions I didn't know about and saved me ₹45,000 this year."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card fade-in delay-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4">
+                            AK
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Amit Khanna</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Startup Founder</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic">"Complete financial setup for my startup. Their monthly bookkeeping service is efficient and professional."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">GET IN TOUCH</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact Our CA Team</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Ready to discuss your financial needs? Reach out for a professional consultation.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Contact Info -->
+                        <div class="gradient-bg p-8 md:p-12 text-white">
+                            <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                            
+                            <div class="space-y-8">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Call Us</h4>
+                                        <p class="text-blue-100">+91 98765 43210</p>
+                                        <p class="text-sm text-blue-200">Available 9 AM - 8 PM</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Email Us</h4>
+                                        <p class="text-blue-100">contact@caproservices.com</p>
+                                        <p class="text-sm text-blue-200">Response within 4 hours</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Visit Us</h4>
+                                        <p class="text-blue-100">Business Center, Main Street<br>City, State - 560001</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-12 pt-8 border-t border-white/20">
+                                <h4 class="font-bold mb-4">Business Hours</h4>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span>Monday - Friday</span>
+                                        <span class="font-medium">9:00 AM - 8:00 PM</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Saturday</span>
+                                        <span class="font-medium">10:00 AM - 6:00 PM</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Sunday</span>
+                                        <span class="font-medium">Appointment Only</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="p-8 md:p-12">
+                            <h3 class="text-2xl font-bold mb-8">Schedule a Consultation</h3>
+                            
+                            <form id="contactForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 dark:text-gray-300 mb-2">First Name *</label>
+                                        <input type="text" class="form-input" placeholder="Your first name" required>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Last Name *</label>
+                                        <input type="text" class="form-input" placeholder="Your last name" required>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Email Address *</label>
+                                    <input type="email" class="form-input" placeholder="you@example.com" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Phone Number *</label>
+                                    <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Service Needed *</label>
+                                    <select class="form-input" required>
+                                        <option value="">Select a service</option>
+                                        <option value="itr">Income Tax Filing</option>
+                                        <option value="gst">GST Services</option>
+                                        <option value="bookkeeping">Bookkeeping</option>
+                                        <option value="consulting">Financial Consulting</option>
+                                        <option value="multiple">Multiple Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                    <textarea rows="4" class="form-input" placeholder="Tell us about your requirements..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full btn-primary py-4 text-lg">
+                                    <i class="fas fa-paper-plane mr-2"></i> Send Message
+                                </button>
+                                
+                                <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-4">
+                                    We respect your privacy. Your information will never be shared.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="gradient-bg w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">CA</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">CA Pro Services</h3>
+                            <p class="text-gray-400 text-sm">Professional Chartered Accountant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Providing expert tax and financial solutions for businesses and individuals since 2015.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#expertise" class="text-gray-400 hover:text-white transition-colors">Expertise</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Income Tax Filing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">GST Registration & Filing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Bookkeeping Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Financial Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Footer -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">contact@caproservices.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">City, State - 560001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© <span id="currentYear"></span> CA Pro Services. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Chartered Accountant registered with ICAI</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme or preferred scheme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate counting numbers
+                    if(entry.target.classList.contains('count-up')) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        animateCount(entry.target, target);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Count up animation
+        function animateCount(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if(current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 20);
+        }
+        
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            this.innerHTML = mobileMenu.classList.contains('hidden') ? 
+                '<i class="fas fa-bars text-xl"></i>' : 
+                '<i class="fas fa-times text-xl"></i>';
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Message Sent!';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                this.reset();
+            }, 3000);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                    document.getElementById('menuBtn').innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
