@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Pro Services | Chartered Accountant for Tax, GST & Financial Solutions</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #10b981;
+            --text-color: #374151;
+            --light-bg: #f9fafb;
+            --cursor-size: 20px;
+            --cursor-trail-count: 15;
+        }
+        
+        /* Dark Mode Variables */
+        .dark {
+            --primary-color: #3b82f6;
+            --secondary-color: #1d4ed8;
+            --accent-color: #10b981;
+            --text-color: #e5e7eb;
+            --light-bg: #111827;
+            --dark-bg: #0f172a;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            cursor: none !important; /* Hide default cursor */
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s;
+            mix-blend-mode: difference;
+        }
+        
+        .cursor.hover {
+            width: calc(var(--cursor-size) * 2);
+            height: calc(var(--cursor-size) * 2);
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .cursor.click {
+            width: calc(var(--cursor-size) * 1.5);
+            height: calc(var(--cursor-size) * 1.5);
+            background-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            mix-blend-mode: difference;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: inherit;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: background 0.5s ease;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 12px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(30, 60, 114, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 12px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.3);
+        }
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 70px 0;
+            }
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.7);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--light-bg);
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .dark .dark-mode-toggle {
+            background: var(--dark-bg);
+        }
+        
+        .toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.4s ease;
+            cursor: pointer !important;
+        }
+        
+        .toggle-btn:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+        
+        /* Gradient Border Animation */
+        .gradient-border {
+            position: relative;
+            border-radius: 12px;
+            background: var(--light-bg);
+            padding: 1px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+            border-radius: 14px;
+            z-index: -1;
+            animation: gradient-rotate 3s linear infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradient-rotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+        
+        /* Pricing Card Styles */
+        .pricing-card {
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(229, 231, 235, 0.5);
+            transform-style: preserve-3d;
+        }
+        
+        .dark .pricing-card {
+            border-color: rgba(55, 65, 81, 0.5);
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(30, 60, 114, 0.2);
+        }
+        
+        .dark .pricing-card:hover {
+            box-shadow: 0 30px 60px rgba(30, 60, 114, 0.4);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary-color);
+            position: relative;
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom-left-radius: 16px;
+            animation: badge-pulse 2s infinite;
+        }
+        
+        @keyframes badge-pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        /* Text Selection */
+        ::selection {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--secondary-color), var(--primary-color));
+        }
+        
+        /* Page Load Animation */
+        .page-load {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            animation: pageLoad 1.5s ease-in-out forwards;
+        }
+        
+        @keyframes pageLoad {
+            0% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Form Input Animations */
+        .form-input {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .dark .form-input {
+            border-color: #4b5563;
+            background-color: #1f2937;
+            color: white;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .dark .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.3);
+        }
+        
+        /* Staggered Animation Delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
+    
+    <!-- Page Load Animation -->
+    <div class="page-load">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <div class="toggle-btn" id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919876543210?text=Hi,%20I'm%20interested%20in%20your%20CA%20services" 
+       target="_blank" 
+       class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-50 transition-colors duration-500">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2 cursor-pointer">
+                        <div class="gradient-bg w-10 h-10 rounded-lg flex items-center justify-center float-animation">
+                            <span class="text-white font-bold text-lg">CA</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900 dark:text-white">CA Pro Services</h1>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Chartered Accountant</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 relative group">
+                        Services
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#pricing" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 relative group">
+                        Pricing
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#testimonials" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 relative group">
+                        Reviews
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#contact" class="btn-primary bounce-animation">Book Consultation</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menuBtn" class="text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 py-4 border-t dark:border-gray-700 transition-all duration-500">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors duration-300">Home</a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors duration-300">Services</a>
+                    <a href="#pricing" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors duration-300">Pricing</a>
+                    <a href="#testimonials" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors duration-300">Reviews</a>
+                    <a href="#contact" class="btn-primary text-center">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-10 left-10 w-20 h-20 border-4 border-white/10 rounded-full animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-32 h-32 border-4 border-white/10 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-16 h-16 border-4 border-white/10 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <!-- Hero Content -->
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <p class="text-blue-200 font-medium mb-4 typewriter">CHARTERED ACCOUNTANT | FINANCIAL CONSULTANT</p>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Professional Tax & Financial Solutions for Your Business</h1>
+                    <p class="text-xl text-blue-100 mb-8">Expert CA services for GST filing, Income Tax returns, bookkeeping, and financial consulting. Helping businesses and individuals save money and stay compliant.</p>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="btn-primary text-center">
+                            <i class="fas fa-calendar-check mr-2"></i> Book Free Consultation
+                        </a>
+                        <a href="#services" class="btn-secondary text-white border-white hover:bg-white hover:text-blue-700 text-center">
+                            <i class="fas fa-chart-line mr-2"></i> View Services
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold count-up" data-target="500">0</h3>
+                            <p class="text-blue-200">Clients Served</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold count-up" data-target="2">0</h3>
+                            <p class="text-blue-200">Cr+ Tax Saved</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold count-up" data-target="99">0</h3>
+                            <p class="text-blue-200">Accuracy Rate</p>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold">24/7</h3>
+                            <p class="text-blue-200">Support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Image / Form -->
+                <div class="md:w-1/2 fade-in delay-1">
+                    <div class="gradient-border p-1">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Get Free Tax Saving Guide</h3>
+                            
+                            <form id="leadForm" class="space-y-4">
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                                    <input type="text" class="w-full px-4 py-3 form-input rounded-lg" placeholder="Enter your name" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                                    <input type="email" class="w-full px-4 py-3 form-input rounded-lg" placeholder="Enter your email" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                                    <input type="tel" class="w-full px-4 py-3 form-input rounded-lg" placeholder="Enter your phone" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Service Interested In</label>
+                                    <select class="w-full px-4 py-3 form-input rounded-lg">
+                                        <option value="">Select a service</option>
+                                        <option value="itr">Income Tax Filing</option>
+                                        <option value="gst">GST Filing</option>
+                                        <option value="bookkeeping">Bookkeeping</option>
+                                        <option value="consulting">Financial Consulting</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="w-full btn-primary py-3">
+                                    <i class="fas fa-download mr-2"></i> Get Free Guide + Consultation
+                                </button>
+                                
+                                <p class="text-center text-gray-600 dark:text-gray-400 text-sm mt-4">We respect your privacy. No spam ever.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">OUR SERVICES</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Professional CA Services</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Comprehensive financial and tax services for individuals, businesses, and startups. Expert solutions tailored to your needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-1">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-animation">
+                        <i class="fas fa-file-invoice-dollar text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Income Tax Filing</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Professional ITR filing for salaried individuals, freelancers, and business owners with maximum deductions.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Salaried ITR Filing</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Business ITR Filing</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Tax Planning</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Form 16 Generation</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-1 group-hover:ml-2 transition-all duration-300"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-2">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-animation" style="animation-delay: 1s;">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">GST Services</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Complete GST solutions including registration, monthly/quarterly filing, and compliance management.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>GST Registration</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Monthly/Quarterly Returns</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>GST Compliance</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Refund Processing</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-1 group-hover:ml-2 transition-all duration-300"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-3">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-animation" style="animation-delay: 1.5s;">
+                        <i class="fas fa-book text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Bookkeeping</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Accurate monthly bookkeeping using Tally, QuickBooks, or Zoho Books for small and medium businesses.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Monthly Bookkeeping</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Financial Statements</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Bank Reconciliation</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Accounts Management</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-1 group-hover:ml-2 transition-all duration-300"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-4">
+                    <div class="gradient-bg w-16 h-16 rounded-xl flex items-center justify-center mb-6 float-animation" style="animation-delay: 2s;">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Financial Consulting</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Personalized financial consulting for startups, businesses, and individuals for growth and compliance.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Business Setup</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Financial Planning</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Startup Advisory</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span>Investment Guidance</span></li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-1 group-hover:ml-2 transition-all duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="section-padding bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">TRANSPARENT PRICING</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Affordable Packages</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Clear pricing with no hidden costs. Choose the plan that fits your needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="pricing-card bg-white dark:bg-gray-900 p-8 fade-in delay-1">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-bold mb-2">Basic</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">For Salaried Individuals</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">₹499</span>
+                            <span class="text-gray-600 dark:text-gray-400">/ITR</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Single ITR Filing</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Tax Saving Suggestions</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Form 16 Review</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Email Support</span></li>
+                        <li class="flex items-center"><i class="fas fa-times text-gray-400 dark:text-gray-600 mr-3"></i> <span class="text-gray-400 dark:text-gray-600">Dedicated CA Support</span></li>
+                        <li class="flex items-center"><i class="fas fa-times text-gray-400 dark:text-gray-600 mr-3"></i> <span class="text-gray-400 dark:text-gray-600">Quarterly Review</span></li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn-secondary w-full text-center py-3">Choose Basic</a>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="pricing-card bg-white dark:bg-gray-900 p-8 popular fade-in" style="animation-delay: 0.2s;">
+                    <div class="popular-badge">Most Popular</div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-bold mb-2">Business Pro</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">For Small Businesses</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">₹4,999</span>
+                            <span class="text-gray-600 dark:text-gray-400">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Monthly Bookkeeping</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>GST Filing (Monthly)</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>TDS Compliance</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Dedicated CA Support</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Quarterly Financial Review</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>WhatsApp Priority Support</span></li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn-primary w-full text-center py-3">Choose Business Pro</a>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card bg-white dark:bg-gray-900 p-8 fade-in delay-3">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">For Growing Companies</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">₹9,999</span>
+                            <span class="text-gray-600 dark:text-gray-400">/month</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Everything in Business Pro</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Monthly Financial Reports</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Tax Planning Strategy</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Audit Support</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>Annual Compliance</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span>24/7 Phone Support</span></li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn-secondary w-full text-center py-3">Choose Enterprise</a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in delay-4">
+                <p class="text-gray-600 dark:text-gray-400">Need a custom package? <a href="#contact" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 group">
+                    Contact us for tailored solutions
+                    <i class="fas fa-arrow-right ml-1 group-hover:ml-2 transition-all duration-300"></i>
+                </a></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 dark:text-blue-400 font-medium mb-2 block">CLIENT REVIEWS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">What Our Clients Say</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Trusted by 500+ businesses and individuals for their financial needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-1">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4 float-animation">
+                            RK
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rajesh Kumar</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Small Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">"Professional and timely GST filing services. They saved me from penalties and helped optimize my taxes. Highly recommended!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4 float-animation" style="animation-delay: 1s;">
+                            PM
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Priya Mehta</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Software Engineer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">"As a salaried professional, I was confused about tax deductions. They filed my ITR and saved me ₹45,000 in taxes. Excellent service!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 card-hover fade-in delay-3">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4 float-animation" style="animation-delay: 1.5s;">
+                            AK
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Amit Khanna</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Startup Founder</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">"Complete financial setup and compliance for my startup. Their monthly bookkeeping package is worth every rupee. 5-star service!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="gradient-bg text-white py-16 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full">
+                <div class="absolute top-1/4 left-1/4 w-40 h-40 border-4 border-white/10 rounded-full animate-spin"></div>
+                <div class="absolute bottom-1/3 right-1/3 w-60 h-60 border-4 border-white/10 rounded-full animate-spin" style="animation-direction: reverse; animation-duration: 20s;"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">Ready to Optimize Your Finances?</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto fade-in delay-1">Book a free 30-minute consultation to discuss your financial needs and get personalized solutions.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 fade-in delay-2">
+                <a href="https://wa.me/919876543210?text=Hi,%20I'd%20like%20to%20book%20a%20free%20consultation%20session" 
+                   target="_blank" 
+                   class="btn-primary bg-white text-blue-700 hover:bg-gray-100 px-8 py-4 text-lg">
+                    <i class="fab fa-whatsapp mr-2 bounce-animation"></i> Chat on WhatsApp
+                </a>
+                <a href="tel:+919876543210" class="btn-secondary border-white text-white hover:bg-white hover:text-blue-700 px-8 py-4 text-lg">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+            </div>
+            
+            <p class="mt-8 text-blue-200 fade-in delay-3"><i class="fas fa-clock mr-2"></i> Mon-Sat: 9 AM - 8 PM | Sunday: 10 AM - 6 PM</p>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8">Have questions about our services? Reach out to us through any of these channels.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start group">
+                            <div class="gradient-bg w-12 h-12 rounded-lg flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform duration-300">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Call Us</h4>
+                                <p class="text-gray-600 dark:text-gray-400">+91 98765 43210</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-500">Available 9 AM - 8 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start group">
+                            <div class="gradient-bg w-12 h-12 rounded-lg flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform duration-300">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email Us</h4>
+                                <p class="text-gray-600 dark:text-gray-400">hello@caproservices.com</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-500">Response within 4 hours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start group">
+                            <div class="gradient-bg w-12 h-12 rounded-lg flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform duration-300">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">WhatsApp</h4>
+                                <p class="text-gray-600 dark:text-gray-400">+91 98765 43210</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-500">Quick responses</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start group">
+                            <div class="gradient-bg w-12 h-12 rounded-lg flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform duration-300">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Office Address</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Business Center, Main Street<br>City, State - 560001</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="font-bold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900 hover:text-pink-600 dark:hover:text-pink-400 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="fade-in delay-1">
+                    <div class="gradient-border p-1">
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+                            
+                            <form id="contactForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 dark:text-gray-300 mb-2">First Name</label>
+                                        <input type="text" class="w-full px-4 py-3 form-input rounded-lg" placeholder="Your first name" required>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Last Name</label>
+                                        <input type="text" class="w-full px-4 py-3 form-input rounded-lg" placeholder="Your last name" required>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                                    <input type="email" class="w-full px-4 py-3 form-input rounded-lg" placeholder="you@example.com" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                                    <input type="tel" class="w-full px-4 py-3 form-input rounded-lg" placeholder="+91 98765 43210" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Service Needed</label>
+                                    <select class="w-full px-4 py-3 form-input rounded-lg" required>
+                                        <option value="">Select a service</option>
+                                        <option value="itr">Income Tax Filing</option>
+                                        <option value="gst">GST Services</option>
+                                        <option value="bookkeeping">Bookkeeping</option>
+                                        <option value="consulting">Financial Consulting</option>
+                                        <option value="other">Other Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                    <textarea rows="4" class="w-full px-4 py-3 form-input rounded-lg" placeholder="Tell us about your requirements..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full btn-primary py-3 text-lg">
+                                    <i class="fas fa-paper-plane mr-2"></i> Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="gradient-bg w-10 h-10 rounded-lg flex items-center justify-center mr-3 float-animation">
+                            <span class="text-white font-bold">CA</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">CA Pro Services</h3>
+                            <p class="text-gray-400 text-sm">Chartered Accountant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Professional tax and financial solutions for individuals and businesses. Helping you save money and stay compliant.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in delay-1">
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors duration-300">Pricing</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors duration-300">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in delay-2">
+                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Income Tax Filing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">GST Registration & Filing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Bookkeeping Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Financial Consulting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Business Setup</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="fade-in delay-3">
+                    <h4 class="text-lg font-bold mb-6">Tax Tips Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Get weekly tax saving tips and financial insights.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 rounded-l-lg w-full text-gray-900">
+                        <button class="gradient-bg px-4 py-3 rounded-r-lg hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4"><i class="fas fa-lock mr-1"></i> We respect your privacy</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center fade-in delay-4">
+                <p class="text-gray-400">© <span id="currentYear"></span> CA Pro Services. All rights reserved. | <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a> | <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a></p>
+                <p class="text-gray-500 text-sm mt-2">Chartered Accountant registered with ICAI</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorTrailCount = 15;
+        let trailElements = [];
+        
+        // Create cursor trail elements
+        for (let i = 0; i < cursorTrailCount; i++) {
+            const trail = document.createElement('div');
+            trail.classList.add('cursor-trail');
+            document.body.appendChild(trail);
+            trailElements.push(trail);
+        }
+        
+        let mouseX = 0, mouseY = 0;
+        let trailX = Array(cursorTrailCount).fill(0);
+        let trailY = Array(cursorTrailCount).fill(0);
+        
+        // Move cursor
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+        
+        // Animate cursor trail
+        function animateCursor() {
+            // Move trail elements
+            for (let i = 0; i < cursorTrailCount; i++) {
+                let targetX, targetY;
+                
+                if (i === 0) {
+                    targetX = mouseX;
+                    targetY = mouseY;
+                } else {
+                    targetX = trailX[i - 1];
+                    targetY = trailY[i - 1];
+                }
+                
+                // Smooth movement
+                trailX[i] += (targetX - trailX[i]) * 0.2;
+                trailY[i] += (targetY - trailY[i]) * 0.2;
+                
+                const trail = trailElements[i];
+                trail.style.left = trailX[i] + 'px';
+                trail.style.top = trailY[i] + 'px';
+                
+                // Fade effect
+                const opacity = 0.6 - (i * 0.04);
+                const size = 6 - (i * 0.3);
+                trail.style.opacity = opacity;
+                trail.style.width = size + 'px';
+                trail.style.height = size + 'px';
+            }
+            
+            requestAnimationFrame(animateCursor);
+        }
+        
+        // Hover effects on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .btn-primary, .btn-secondary, input, select, textarea');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+            
+            el.addEventListener('mousedown', () => {
+                cursor.classList.add('click');
+            });
+            
+            el.addEventListener('mouseup', () => {
+                cursor.classList.remove('click');
+            });
+        });
+        
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme or prefered scheme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Page Load Animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.page-load').style.display = 'none';
+            }, 1500);
+            
+            // Start cursor animation after page load
+            animateCursor();
+        });
+        
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate counting numbers
+                    if(entry.target.classList.contains('count-up')) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        const suffix = entry.target.textContent.includes('Cr') ? 'Cr+' : '';
+                        animateCount(entry.target, target, suffix);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Count up animation
+        function animateCount(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if(current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = suffix ? Math.floor(current) + suffix : Math.floor(current);
+            }, 20);
+        }
+        
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            this.innerHTML = mobileMenu.classList.contains('hidden') ? 
+                '<i class="fas fa-bars text-xl"></i>' : 
+                '<i class="fas fa-times text-xl"></i>';
+        });
+        
+        // Form submission handlers
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Thank you! Your free guide will be emailed to you shortly. We will also contact you for a free consultation.', 'success');
+            this.reset();
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Thank you for your message! We will get back to you within 4 hours.', 'success');
+            this.reset();
+        });
+        
+        // Notification function
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform transition-all duration-500 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} mr-3"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                    document.getElementById('menuBtn').innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Parallax effect on hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('#home');
+            if(heroSection) {
+                const rate = scrolled * 0.5;
+                heroSection.style.backgroundPosition = `center ${rate}px`;
+            }
+        });
+        
+        // Add keyboard navigation for accessibility
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') {
+                document.getElementById('mobileMenu').classList.add('hidden');
+                document.getElementById('menuBtn').innerHTML = '<i class="fas fa-bars text-xl"></i>';
+            }
+        });
+        
+        // Initialize tooltips for icons
+        document.querySelectorAll('[data-tooltip]').forEach(el => {
+            el.addEventListener('mouseenter', (e) => {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'fixed bg-gray-900 text-white px-3 py-2 rounded-lg text-sm z-50';
+                tooltip.textContent = e.target.getAttribute('data-tooltip');
+                document.body.appendChild(tooltip);
+                
+                const rect = e.target.getBoundingClientRect();
+                tooltip.style.left = rect.left + 'px';
+                tooltip.style.top = (rect.top - 40) + 'px';
+                
+                e.target._tooltip = tooltip;
+            });
+            
+            el.addEventListener('mouseleave', (e) => {
+                if(e.target._tooltip) {
+                    e.target._tooltip.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
