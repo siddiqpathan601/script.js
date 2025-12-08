@@ -17,7 +17,7 @@ function addTask(text) {
 
   li.innerHTML = `
     <span class="task-text">${text}</span>
-    <button class="delete bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+    <button class="delete bg-red-600 text-white px-2 py-1 rounded hover:bg-red-600">
       Delete
     </button>
   `;
