@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI TODO —  Todo List</title>
+
+  <!-- Tailwind CDN (for quick setup) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Simple favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗒️</text></svg>">
+
+  <style>
+    /* tiny custom CSS to complement Tailwind */
+    .fade-enter { transform: translateY(-6px); opacity: 0; }
+    .fade-enter-active { transform: translateY(0); opacity: 1; transition: all 180ms; }
+    .toast { animation: toast-slide 320ms ease-out; }
+    @keyframes toast-slide { from { transform: translateY(8px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+  <div class="max-w-2xl mx-auto px-4 py-8">
+    <header class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-semibold">AI- TODO</h1>
+        <p class="text-sm text-slate-500">Add tasks faster — try voice or AI suggestion</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="darkToggle" aria-label="Toggle dark mode" class="p-2 rounded-md hover:bg-slate-100">
+          🌙
+        </button>
+        <button id="helpBtn" class="text-xs px-3 py-1 bg-indigo-600 text-white rounded-md">Help</button>
+      </div>
+    </header>
+
+    <!-- Input area -->
+    <section class="bg-white shadow rounded-lg p-4 mb-4">
+      <div class="flex gap-2">
+        <input id="taskInput" placeholder="What needs doing?" class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring" />
+        <select id="priority" class="px-2 py-2 border rounded-md">
+          <option value="normal">Normal</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button id="voiceBtn" title="Add by voice" class="px-3 py-2 border rounded-md">🎤</button>
+        <button id="aiSuggestBtn" title="AI Suggest" class="px-3 py-2 bg-emerald-600 text-white rounded-md">AI</button>
+        <button id="addBtn" class="px-3 py-2 bg-indigo-600 text-white rounded-md">Add</button>
+      </div>
+
+      <div class="mt-3 flex items-center gap-3 text-sm text-slate-600">
+        <div>Category: <span id="autoCategory" class="font-medium">—</span></div>
+        <div class="ml-auto flex gap-2">
+          <button class="filterBtn px-2 py-1 rounded-md bg-slate-100" data-filter="all">All</button>
+          <button class="filterBtn px-2 py-1 rounded-md" data-filter="active">Active</button>
+          <button class="filterBtn px-2 py-1 rounded-md" data-filter="completed">Completed</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- List -->
+    <section id="listWrap" class="bg-white shadow rounded-lg p-4">
+      <ul id="todoList" class="space-y-2"></ul>
+
+      <div class="mt-4 flex justify-between items-center text-sm text-slate-600">
+        <div id="stats">0 items</div>
+        <div class="flex gap-2">
+          <button id="clearCompleted" class="px-2 py-1 rounded-md bg-red-50 text-red-600">Clear completed</button>
+          <button id="exportBtn" class="px-2 py-1 rounded-md bg-slate-50">Export</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast container -->
+    <div id="toastContainer" class="fixed right-6 bottom-6 space-y-2 z-50"></div>
+
+    <!-- Help modal (simple) -->
+    <div id="helpModal" class="fixed inset-0 hidden items-center justify-center z-40">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
+        <h3 class="font-semibold text-lg mb-2">How AI Suggest works</h3>
+        <p class="text-sm text-slate-600 mb-4">
+          The AI is local and deterministic. It suggests task text and an automatic category by analyzing your input or context keywords (Work/Personal/Urgent/Other).
+        </p>
+        <ul class="list-disc list-inside text-sm text-slate-600 mb-4">
+          <li>Voice: click 🎤 and speak, then press Add.</li>
+          <li>AI Suggest: get a quick task template and category.</li>
+          <li>No server — everything stays in your browser (LocalStorage).</li>
+        </ul>
+        <div class="text-right">
+          <button id="closeHelp" class="px-3 py-1 rounded-md bg-indigo-600 text-white">Close</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- script.js -->
+  <script src="app.js"></script>
+</body>
+</html>
